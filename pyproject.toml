@@ -1,0 +1,33 @@
+[build-system]
+requires = [
+    "setuptools>=61.0",
+    "torch>=2",
+    "numpy",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quiptools_cuda"
+version = "0.0.1"
+authors = [
+  { name="Albert Tseng", email="albert@cs.cornell.edu" },
+  { name="Jerry Chee", email="JerryChee@cs.cornell.edu" },
+  { name="Qingyao Sun", email="qs234@cornell.edu" },
+  { name="Volodymyr Kuleshov", email="kuleshov@cornell.edu" },
+  { name="Christopher De Sa", email="cdesa@cs.cornell.edu" },
+]
+description = "CUDA kernels as PyTorch extensions for QuIP"
+readme = "README.md"
+requires-python = ">=3.8"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+]
+dependencies = [
+    "torch >= 2",
+    "numpy",
+]
+
+[project.urls]
+Homepage = "https://github.com/Cornell-RelaxML/quip-sharp"
+Issues = "https://github.com/Cornell-RelaxML/quip-sharp/issues"

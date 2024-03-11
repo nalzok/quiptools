@@ -1,7 +1,7 @@
 import time
 
-import quiptools_cuda
 import torch
+import quiptools
 
 k = 32 * 32
 m = 8192 * 2
@@ -32,7 +32,7 @@ print(f"elapsed for pure torch: {end - start}")
 
 torch.cuda.synchronize()
 start = time.time()
-quiptools_cuda.decompress_d4_origorder(yidxs, cb, y1)
+quiptools.decompress_d4_origorder(yidxs, cb, y1)
 torch.cuda.synchronize()
 end = time.time()
 print(f"elapsed for orig decompress_d4: {end - start}")
@@ -42,7 +42,7 @@ assert ((y1 == y).all())
 y1.zero_()
 torch.cuda.synchronize()
 start = time.time()
-quiptools_cuda.decompress_d4(yidxs_reordered, cb, y1)
+quiptools.decompress_d4(yidxs_reordered, cb, y1)
 z1 = x @ y1.t()
 torch.cuda.synchronize()
 end = time.time()
@@ -52,7 +52,7 @@ assert ((y1 == y).all())
 
 torch.cuda.synchronize()
 start = time.time()
-quiptools_cuda.lookupmatmul_d4_k8(x, yidxs_reordered, cb, z)
+quiptools.lookupmatmul_d4_k8(x, yidxs_reordered, cb, z)
 torch.cuda.synchronize()
 end = time.time()
 print(f"   elapsed for k8 cuda: {end - start}")
@@ -64,7 +64,7 @@ print(f"lookupmatmul_d4_k8 error: {lookupmatmul_d4_k8_err}")
 
 torch.cuda.synchronize()
 start = time.time()
-quiptools_cuda.lookupmatmul_d4_k16(x, yidxs_reordered, cb, z)
+quiptools.lookupmatmul_d4_k16(x, yidxs_reordered, cb, z)
 torch.cuda.synchronize()
 end = time.time()
 print(f"  elapsed for k16 cuda: {end - start}")
@@ -76,7 +76,7 @@ print(f"lookupmatmul_d4_k16 error: {lookupmatmul_d4_k16_err}")
 
 torch.cuda.synchronize()
 start = time.time()
-quiptools_cuda.lookupmatmul_d4_k32(x, yidxs_reordered, cb, z)
+quiptools.lookupmatmul_d4_k32(x, yidxs_reordered, cb, z)
 torch.cuda.synchronize()
 end = time.time()
 print(f"  elapsed for k32 cuda: {end - start}")
