@@ -109,6 +109,7 @@ void lookupmatmul_d4_k8(
     Z.data_ptr<c10::Half>(),
     k,m,n
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 
@@ -188,6 +189,7 @@ void lookupmatmul_d4_k16(
     Z.data_ptr<c10::Half>(),
     k,m,n
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 
@@ -280,6 +282,7 @@ void lookupmatmul_d4_k32(
     Z.data_ptr<c10::Half>(),
     k,m,n
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 #define DECOMPRESS_D4_BLOCK_SIZE 256
@@ -323,6 +326,7 @@ void decompress_d4_origorder(
     CB.data_ptr<c10::Half>(),
     Y.data_ptr<c10::Half>()
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 
@@ -370,6 +374,7 @@ void decompress_d4(
     Y.data_ptr<c10::Half>(),
     m,n
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 
@@ -425,6 +430,7 @@ void decompress_hi4b1c_packed(
     CB.data_ptr<c10::Half>(),
     Y.data_ptr<c10::Half>()
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 
@@ -478,6 +484,7 @@ void decompress_hi3b1c_packed(
     CB.data_ptr<c10::Half>(),
     Y.data_ptr<c10::Half>()
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 // This is a terrible kernel, only use this to not call the pytorch version
@@ -530,6 +537,7 @@ void decompress_hi2b1c_packed(
     CB.data_ptr<c10::Half>(),
     Y.data_ptr<c10::Half>()
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 
@@ -583,6 +591,7 @@ void decompress_e81b_packed(
     CB.data_ptr<c10::Half>(),
     Y.data_ptr<c10::Half>()
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 
 
@@ -672,5 +681,6 @@ void lookupmatmul_e81b_k8(
     Z.data_ptr<float>(),
     k,m,n
   );
+  gpuErrchk(cudaPeekAtLastError());
 }
 

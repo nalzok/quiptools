@@ -82,7 +82,7 @@ decode_matvec_e8p_kernel(
     // }
     // __syncthreads();
 
-    __shared__ uint2 shared_weights[1024*2];
+    // __shared__ uint2 shared_weights[1024*2];
 
     for (int iin = blockIdx.x; iin < (N >> 4); iin += gridDim.x) {
 

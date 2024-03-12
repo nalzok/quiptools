@@ -6,12 +6,12 @@ setup(
     ext_modules=[
         CUDAExtension(
             name="quiptools",
-            sources=["quiptools/quiptools_wrapper.cpp",
-                     "quiptools/quiptools.cu",
-                     "quiptools/quiptools_e8p_gemv.cu"],
+            sources=["csrc/quiptools/quiptools_wrapper.cpp",
+                     "csrc/quiptools/quiptools.cu",
+                     "csrc/quiptools/quiptools_e8p_gemv.cu"],
             extra_compile_args={
-                "cxx": ["-g", "-lineinfo"],
-                "nvcc": ["-O2", "-g", "-Xcompiler", "-rdynamic", "-lineinfo"]
+                "cxx": ["-O3", "-std=c++17"],
+                "nvcc": ["-O3", "-std=c++17"]
             }
         )
     ],
